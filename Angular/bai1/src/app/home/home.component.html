@@ -1,0 +1,54 @@
+<!-- <div class="test">
+  <p>home works!</p>
+  <h1>My name is {{name}}</h1>
+  <input value=" {{name}}"/>
+  <br/>
+  <input type="text" [(ngModel)]="age"/>
+  <p *ngIf="age < 18">Bạn còn trẻ lắm</p>
+  <p *ngIf="age >= 18">Bạn đã lớn rồi</p>
+
+  <div *ngIf="age < 18; then tre else gia"></div>
+  <ng-template #tre>Bạn còn trẻ lắm</ng-template>
+  <ng-template #gia>Bạn đã lớn rồi</ng-template>
+
+  <button (click)="resetName()">Reset tuổi</button>
+
+  <h1>Danh sách hoa quả</h1>
+  <div *ngFor="let hq of traiCay; let i = index">
+      <li>{{i}}. {{hq}}</li>
+  </div>
+
+  <h1>Bảng thông tin hoa quả</h1>
+  <table class="tableHQ">
+    <tr>
+      <th>Thứ tự</th>
+      <th>Tên hoa quả</th>
+      <th>Giá</th>
+      <th>Ghi chú</th>
+    </tr>
+    <tr *ngFor="let hq of traiCay2; let i = index">
+      <td>{{i}}</td>
+      <td>{{hq.ten}}</td>
+      <td [ngClass]="{soAm: hq.gia < 0}">{{hq.gia}}</td>
+      <td *ngIf="hq.haGia">Đang hạ giá!</td>
+    </tr>
+  </table>
+</div> -->
+
+<h1>Địa chỉ</h1>
+<h3>Tỉnh/Thành phố: </h3>
+<select id="city" (change)="changeCity($event)">
+  <option *ngFor="let data of cities" value="{{data.name}}">
+    {{data.name}}
+  </option>
+</select>
+<br/>
+<h3>Quận/Huyện: </h3>
+<select id="districtsList">
+  <option *ngFor="let data of districtsList" value="{{data}}">
+    {{data}}
+  </option>
+</select>
+
+<a routerLink="/first">First Component</a>
+<router-outlet></router-outlet>

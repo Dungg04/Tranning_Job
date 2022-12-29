@@ -1,0 +1,16 @@
+.test {
+  color: red;
+}
+
+.tableHQ, td, th {
+  border-collapse: collapse;
+  border: 1px black solid;
+}
+
+td, th {
+  min-width: 100px;
+}
+
+.soAm {
+  color: blue;
+}
