@@ -1,0 +1,2 @@
+union >< union all, like >< in, <join>, group by >< having, soted >< function
+jpa><native, 

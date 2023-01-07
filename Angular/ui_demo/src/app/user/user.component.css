@@ -1,0 +1,11 @@
+.btn {
+  width: 100px;
+  height: 30px;
+  background-color: rgb(154, 216, 135);
+  color: black;
+  margin-left: 10px;
+}
+
+.add {
+  margin-bottom: 20px;
+}

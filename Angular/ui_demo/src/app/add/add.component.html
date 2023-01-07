@@ -1,0 +1,36 @@
+<h1>Nhập thông tin người dùng</h1>
+
+<form>
+  <span>
+    <label>FirstName</label>
+    <input type="text" id="firstName" name="firstName" required minlength="4" class="input_field" [(ngModel)]="user.firstName" #firstName="ngModel"/>
+  </span>
+  <div *ngIf="firstName.invalid" class="alert" id="err">
+      <div *ngIf="firstName.errors?.['required']">
+        FirstName is required
+      </div>
+      <div *ngIf="firstName.errors?.['minlength']">
+        FirstName must be at least 4 characters long.
+      </div>
+  </div>
+  <br/>
+  <span>
+    <label>LastName</label>
+    <input type="text" name="lastName" id="lastName" class="input_field" [(ngModel)]="user.lastName" required #lastName="ngModel"/>
+  </span>
+  <div *ngIf="lastName.invalid" class="alert" id="err">
+    <div *ngIf="firstName.errors?.['required']">
+      LastName is required
+    </div>
+  </div>
+  <br/>
+  <span>
+    <label>Email</label>
+    <input type="text" name="email" id="email" class="input_field" [(ngModel)]="user.email" required email #email="ngModel"/>
+  </span>
+  <div *ngIf="email.errors?.['email']">
+      Email
+  </div>
+  <br/>
+  <button class="btn" (click)="addUser()">Thêm mới</button>
+</form>

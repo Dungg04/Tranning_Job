@@ -1,0 +1,25 @@
+<h1>Danh sách người dùng</h1>
+<button class="btn add" routerLink="/addUser">Thêm</button>
+<table>
+  <thead>
+    <tr>
+      <th>STT</th>
+      <th>FirstName</th>
+      <th>LastName</th>
+      <th>Email</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of users, let i = index">
+      <td>{{i+1}}</td>
+      <td>{{user.firstName}}</td>
+      <td>{{user.lastName}}</td>
+      <td>{{user.email}}</td>
+      <td>
+        <a routerLink="editUser/{{user.id}}"><button class="btn" >Sửa</button></a>
+        <button class="btn" (click)="deleteUser(user.id)">Xoá</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

@@ -1,0 +1,18 @@
+<form>
+  <span>
+    <label>FirstName</label>
+    <input type="text" name="firstName" class="input_field" value="{{user.firstName}}" [(ngModel)]="user.firstName"/>
+  </span>
+  <br/>
+  <span>
+    <label>LastName</label>
+    <input type="text" name="lastName" class="input_field" value="{{user.lastName}}" [(ngModel)]="user.lastName"/>
+  </span>
+  <br/>
+  <span>
+    <label>Email</label>
+    <input type="text" name="email" class="input_field" value="{{user.email}}" [(ngModel)]="user.email"/>
+  </span>
+  <br/>
+  <button class="btn" (click)="editUser()">Sửa</button>
+</form>

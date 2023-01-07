@@ -1,0 +1,36 @@
+<p>reactive works!</p>
+
+<!-- <form [formGroup]="formData" (ngSubmit)="onSubmit()">
+  <label>
+    Name:
+    <input type="text" formControlName="name"/>
+  </label>
+  <button type="button">Submit</button>
+</form> -->
+
+<form [formGroup]="formData" (ngSubmit)="onSubmit()">
+
+  <label for="first-name">First Name:
+    <input id="first-name" type="text" formControlName="firstName">
+    <div *ngIf="!formData.controls.firstName.valid" style="color: red;">First name requied</div>
+  </label>
+
+  <br/>
+  <label for="last-name">Last Name: </label>
+  <input id="last-name" type="text" formControlName="lastName">
+
+  <br/>
+  <button type="submit" [disabled]="!formData.valid">Submit</button>
+  <!-- <p>Form Status: {{ formData.status }}</p> -->
+
+  <div formArrayName="aliases">
+    <h2>Aliases</h2>
+    <button type="button" (click)="addAlias()">+ Add another alias</button>
+
+    <div *ngFor="let alias of aliases.controls; let i=index">
+      <!-- The repeated alias template -->
+      <label for="alias-{{ i }}">Alias:</label>
+      <input id="alias-{{ i }}" type="text" [formControlName]="i">
+    </div>
+  </div>
+</form>

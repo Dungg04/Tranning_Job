@@ -3,7 +3,49 @@
   <ul>
     <li><a routerLink="/first" routerLinkActive="active">First Component</a></li>
     <li><a routerLink="/home" routerLinkActive="active">Home Component</a></li>
+
+    <li><a routerLink="/template" routerLinkActive="active">Tempale Form Component</a></li>
+    <li><a routerLink="/reactive" routerLinkActive="active">Reactive Component</a></li>
+    <li><a routerLink="/getData" routerLinkActive="active">Get Data Component</a></li>
+    <li><a routerLink="/postData" routerLinkActive="active">Post Data Component</a></li>
+    <li><a routerLink="/svg" routerLinkActive="active">Svg Component</a></li>
+
+
   </ul>
 </nav>
 
 <router-outlet></router-outlet>
+
+
+<h2 id="appUnless">UnlessDirective</h2>
+<p>
+  The condition is currently
+  <span [ngClass]="{ 'a': !condition, 'b': condition, 'unless': true }">{{condition}}</span>.
+  <button
+    type="button"
+    (click)="condition = !condition"
+    [ngClass] = "{ 'a': condition, 'b': !condition }" >
+    Toggle condition to {{condition ? 'false' : 'true'}}
+  </button>
+</p>
+
+
+<p *appUnless="condition" class="unless a">
+  (A) This paragraph is displayed because the condition is false.
+</p>
+
+<p *appUnless="!condition" class="unless b">
+  (B) Although the condition is true,
+  this paragraph is displayed because appUnless is set to false.
+</p>
+
+<hr/>
+<h1>If load Directive</h1>
+
+
+<h1>Trigonometry</h1>
+<ul *appTrigonometry="30; sin as s; cos as c; tan as t">
+  <li>sin(30°): {{ s }}</li>
+  <li>cos(30°): {{ c }}</li>
+  <li>tan(30°): {{ t }}</li>
+</ul>
