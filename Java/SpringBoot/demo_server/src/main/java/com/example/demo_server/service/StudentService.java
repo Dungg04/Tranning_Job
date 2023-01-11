@@ -21,7 +21,7 @@ public class StudentService {
     private StudentRepository studentRepository;
 
     public String exportReport(String reportFormat) throws FileNotFoundException, JRException {
-        String path = "D:\\Tranning\\Report";
+        String path = "D:\\Training\\Report";
         List<Student> students = studentRepository.findAll();
 
         //Load file
