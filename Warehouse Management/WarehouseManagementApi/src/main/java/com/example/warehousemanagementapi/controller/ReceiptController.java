@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.io.FileNotFoundException;
 import java.util.Date;
 
+@CrossOrigin
 @RestController
 @RequestMapping("v1/api")
 public class ReceiptController {

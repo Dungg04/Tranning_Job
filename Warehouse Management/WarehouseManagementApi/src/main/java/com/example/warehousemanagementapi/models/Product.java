@@ -26,13 +26,16 @@ public class Product {
     @JsonIgnore
     private List<BillDetail> billDetails;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "product")
-    @JsonIgnore
-    private List<Inventory> inventories;
+//    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "product")
+//    @JsonIgnore
+//    private List<Inventory> inventories;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "product")
     @JsonIgnore
     private List<ReceiptDetail> receiptDetails;
 
+    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+    @JoinColumn(name = "warehouseID")
+    private Warehouse warehouse;
 
 }

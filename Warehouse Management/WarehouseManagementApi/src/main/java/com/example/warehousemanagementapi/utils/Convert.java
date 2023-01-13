@@ -24,13 +24,13 @@ public class Convert {
         return customer;
     }
 
-//    public static Warehouse fromWarehouseDTOToWarehouse(WarehouseDTO warehouseDTO, Warehouse warehouse) {
-//        warehouse.setWarehouseName(warehouseDTO.getWarehouseName());
-//        warehouse.setAddress(warehouseDTO.getAddress());
-//        warehouse.setPhoneNumber(warehouseDTO.getPhoneNumber());
-//        return warehouse;
-//    }
-//
+    public static Warehouse fromWarehouseDTOToWarehouse(WarehouseDTO warehouseDTO, Warehouse warehouse) {
+        warehouse.setWarehouseName(warehouseDTO.getWarehouseName());
+        warehouse.setAddress(warehouseDTO.getAddress());
+        warehouse.setPhoneNumber(warehouseDTO.getPhoneNumber());
+        return warehouse;
+    }
+
 //    public static Inventory fromReportDTOToReport(ReceiptDetailDTO reportDTO, Inventory report) {
 //        report.setReportingDate(reportDTO.getReportingDate());
 //        report.setMaterialCode(reportDTO.getMaterialCode());
@@ -69,10 +69,4 @@ public class Convert {
         product.setPrice(productDTO.getPrice());
         return product;
     }
-
-//    public static Department fromDepartmentDTOToDepartment(DepartmentDTO departmentDTO, Department department) {
-//        department.setDepartmentName(departmentDTO.getDepartmentName());
-//        department.setPhoneNumber(department.getPhoneNumber());
-//        return department;
-//    }
 }

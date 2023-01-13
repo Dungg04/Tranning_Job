@@ -1,0 +1,54 @@
+
+<h1 class="text-center">Danh sách hàng hoá</h1>
+
+<div class="row">
+  <button type="button" class="btn btn-primary" routerLink="/addProduct">Thêm mới</button>
+<button type="button" class="btn btn-secondary" (click)="sortByAmount()">Sắp xếp theo số lượng</button>
+<button type="button" class="btn btn-success">Success</button>
+<button type="button" class="btn btn-danger">Danger</button>
+<form class="form-inline">
+  <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="productID" id="productID" [(ngModel)]="productName">
+  <button class="btn btn-outline-success my-2 my-sm-0" (click)="searchByName()">Search</button>
+</form>
+</div>
+
+<table class="table table-sm" *ngIf="products.length >0">
+  <thead>
+    <tr>
+      <th scope="col">STT</th>
+      <th scope="col">Mã hàng hoá</th>
+      <th scope="col">Tên hàng hoá</th>
+      <th scope="col">Số lượng</th>
+      <th scope="col">Giá cả</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of products, let i = index" routerLink="editProduct/{{item.productID}}">
+      <td>{{i+1}}</td>
+      <td>{{item.productID}}</td>
+      <td>{{item.productName}}</td>
+      <td>{{item.amount}}</td>
+      <td>{{item.price}}</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="modal" tabindex="-1" *ngIf="products.length <= 0">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Modal body text goes here.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>

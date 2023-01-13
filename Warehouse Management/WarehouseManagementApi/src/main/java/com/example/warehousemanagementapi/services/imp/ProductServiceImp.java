@@ -2,13 +2,16 @@ package com.example.warehousemanagementapi.services.imp;
 
 import com.example.warehousemanagementapi.dtos.ProductDTO;
 import com.example.warehousemanagementapi.exceptions.NotFoundException;
+import com.example.warehousemanagementapi.models.BillDetail;
 import com.example.warehousemanagementapi.models.Product;
+import com.example.warehousemanagementapi.models.ReceiptDetail;
 import com.example.warehousemanagementapi.repositories.ProductRepository;
 import com.example.warehousemanagementapi.services.IProductService;
 import com.example.warehousemanagementapi.utils.Convert;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -54,5 +57,46 @@ public class ProductServiceImp implements IProductService {
         Convert.fromProductDTOToProduct(productDTO, product.get());
 
         return productRepository.save(product.get());
+    }
+
+    @Override
+    public List<ReceiptDetail> getAllReceiptByProduct(String productID) {
+        Optional<Product> product = productRepository.findById(productID);
+        if (product.isEmpty()) {
+            throw new NotFoundException("Couldn't find a product with id: " + productID);
+        }
+        return product.get().getReceiptDetails();
+    }
+
+    @Override
+    public List<BillDetail> getAllBillByProduct(String productID) {
+        Optional<Product> product = productRepository.findById(productID);
+        if (product.isEmpty()) {
+            throw new NotFoundException("Couldn't find a product with id: " + productID);
+        }
+        return product.get().getBillDetails();
+    }
+
+    @Override
+    public List<Product> getProductsSortByAmount() {
+        return productRepository.SortProductsByAmount();
+    }
+
+    @Override
+    public List<Product> getProductsByName(String productName) {
+        List<Product> products = productRepository.findAllByProductName(productName);
+        if (products.isEmpty()) {
+            throw new NotFoundException("Couldn't find a product with name: " + productName);
+        }
+        return products;
+    }
+
+    @Override
+    public List<Product> getProductsById(String productID) {
+        List<Product> products = productRepository.findAllById(Collections.singleton(productID));
+        if (products.isEmpty()) {
+            throw new NotFoundException("Couldn't find a product with id: " + productID);
+        }
+        return products;
     }
 }

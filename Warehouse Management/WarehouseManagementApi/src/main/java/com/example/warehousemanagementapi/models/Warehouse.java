@@ -23,7 +23,11 @@ public class Warehouse {
     private String phoneNumber;
     private String stocker;
 
+//    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "warehouse")
+//    @JsonIgnore
+//    private List<Inventory> reports;
+
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "warehouse")
     @JsonIgnore
-    private List<Inventory> reports;
+    private List<Product> products;
 }
