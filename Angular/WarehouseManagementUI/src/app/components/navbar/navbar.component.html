@@ -1,1 +1,36 @@
-<p>navbar works!</p>
+<div id="sidebar"  *ngIf="isLoggedIn$ | async as isLoggedIn">
+  <ul class="nav-left">
+    <li>
+      <a routerLink="/home">
+        <i class="bi bi-house"></i> Trang chủ
+      </a>
+    </li>
+    <li class="current-item">
+      <a routerLink="/getCustomer">Quản lý khách hàng <span class="arrow">&#9660;</span></a>
+      <ul class="sub-menu">
+        <li><a routerLink="/getCustomer">Danh sách khách hàng</a></li>
+        <li><a routerLink="/addCustomer">Thêm khách hàng</a></li>
+      </ul>
+    </li>
+    <li>
+      <a routerLink="/getManufatucre">
+        <i class="bi bi-building"></i> Quản lý nhà cung cấp
+      </a>
+    </li>
+    <li class="current-item">
+      <a routerLink="/getCustomer">Quản lý hàng hoá<span class="arrow">&#9660;</span></a>
+      <ul class="sub-menu">
+        <li><a routerLink="/home">Danh sách hàng hoá</a></li>
+        <li><a routerLink="/addReceipt">Nhập hàng hoá</a></li>
+        <li><a routerLink="/addReceipt">Xuất hàng hoá</a></li>
+      </ul>
+    </li>
+    <li class="current-item">
+      <a routerLink="/reportReceipt">Quản lý báo cáo<span class="arrow">&#9660;</span></a>
+      <ul class="sub-menu">
+        <li><a routerLink="/reportReceipt">Nhập kho</a></li>
+        <li><a routerLink="/addCustomer">Xuất kho</a></li>
+      </ul>
+    </li>
+  </ul>
+</div>

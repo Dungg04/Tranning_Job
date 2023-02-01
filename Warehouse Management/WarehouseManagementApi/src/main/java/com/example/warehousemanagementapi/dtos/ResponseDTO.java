@@ -1,6 +1,6 @@
-package com.fruits.congtyhoaqua.dtos;
+package com.example.warehousemanagementapi.dtos;
 
-import com.fruits.congtyhoaqua.constant.ResponseMessageEnum;
+import com.example.warehousemanagementapi.constant.ResponseMessageEnum;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

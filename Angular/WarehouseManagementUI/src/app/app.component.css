@@ -1,0 +1,75 @@
+@import "~bootstrap/dist/css/bootstrap.css";
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container-fluid {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/* Phần css của header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 50px;
+  background-color: #3c8dbc;
+  padding: 0 20px;
+}
+
+.logo img{
+  width: 100px;
+  height: 40px;
+  cursor: pointer;
+}
+
+.info-account img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin-right: 8px;
+  cursor: pointer;
+}
+
+.info-account p{
+  margin: 0 !important;
+  font-size: 16px;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* Phần css của menu bên trái */
+.wrapper {
+  display: flex;
+  width: 100%;
+  align-items: stretch;
+}
+
+#sidebar {
+  z-index: 10;
+  width: 250px;
+  height: 100%;
+  overflow-y: auto;
+  background: #222d32;
+}
+
+#sidebar .nav-left a{
+  display: block;
+  background: none;
+  color: #CFD8DC;
+  font-size: 14px;
+  padding: 16px 24px;
+}
+
+#sidebar .nav-left a:hover{
+  background: none;
+  color: #ECEFF1;
+  text-decoration: none;
+}
+
+#sidebar .nav-left a i{
+  margin-right: 16px;
+}

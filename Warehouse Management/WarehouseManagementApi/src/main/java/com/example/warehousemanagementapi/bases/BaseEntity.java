@@ -1,4 +1,4 @@
-package com.fruits.congtyhoaqua.bases;
+package com.example.warehousemanagementapi.bases;
 
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;

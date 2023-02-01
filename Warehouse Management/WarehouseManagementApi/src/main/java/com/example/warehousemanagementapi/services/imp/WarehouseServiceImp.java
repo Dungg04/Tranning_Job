@@ -27,7 +27,7 @@ public class WarehouseServiceImp implements IWarehouseService {
     @Override
     public Warehouse getWarehouse(String warehouseID) {
         Optional<Warehouse> warehouse = warehouseRepository.findById(warehouseID);
-        if(warehouse.isEmpty()) {
+        if(!warehouse.isPresent()) {
             throw new NotFoundException("Couldn't find a warehouse with id: " + warehouseID);
         }
         return warehouse.get();
@@ -36,7 +36,7 @@ public class WarehouseServiceImp implements IWarehouseService {
     @Override
     public Warehouse createWarehouse(String warehouseID, WarehouseDTO warehouseDTO) {
         Optional<Warehouse> warehouse = warehouseRepository.findById(warehouseID);
-        if(!warehouse.isEmpty()) {
+        if(!warehouse.isPresent()) {
             throw new BadRequestException("Already exist warehouse with id: " + warehouseID);
         }
         Warehouse newWarehouse = new Warehouse();
@@ -47,7 +47,7 @@ public class WarehouseServiceImp implements IWarehouseService {
     @Override
     public Warehouse editWarehouse(String warehouseID, WarehouseDTO warehouseDTO) {
         Optional<Warehouse> warehouse = warehouseRepository.findById(warehouseID);
-        if(warehouse.isEmpty()) {
+        if(!warehouse.isPresent()) {
             throw new NotFoundException("Couldn't find a warehouse with id: " + warehouseID);
         }
         Convert.fromWarehouseDTOToWarehouse(warehouseDTO, warehouse.get());

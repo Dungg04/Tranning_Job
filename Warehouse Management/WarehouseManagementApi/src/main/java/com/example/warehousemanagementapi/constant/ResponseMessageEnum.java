@@ -1,4 +1,4 @@
-package com.fruits.congtyhoaqua.constant;
+package com.example.warehousemanagementapi.constant;
 
 
 public enum ResponseMessageEnum {

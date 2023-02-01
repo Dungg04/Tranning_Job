@@ -1,2 +1,15 @@
+<div style="background-color: #aec3da; height: 890px;" class="container-fluid">
+  <app-sidebar></app-sidebar>
 
-<router-outlet></router-outlet>
+  <div class="wrapper">
+    <div id="sidebar">
+      <app-navbar></app-navbar>
+    </div>
+
+    <div id="content" class="container text-center align-items-center" style="margin-left: 50px; margin-top: 30px">
+      <div>
+        <router-outlet> </router-outlet>
+      </div>
+    </div>
+  </div>
+</div>

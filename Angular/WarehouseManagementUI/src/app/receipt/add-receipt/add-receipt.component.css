@@ -1,0 +1,37 @@
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.ncc {
+  /* width: 400px; */
+  display: flex;
+  align-items: center;
+  /* justify-content: space-around; */
+}
+
+.receiptDetail {
+  width: 1300px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.inputName {
+  width: 100px;
+  text-align: start;
+  margin-top: 10px;
+}
+
+.inputDetail {
+  width: 500px;
+  text-align: start;
+}
+
+.body_custom {
+  width: 1500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

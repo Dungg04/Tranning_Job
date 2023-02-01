@@ -1,7 +1,7 @@
-package com.fruits.congtyhoaqua.bases;
+package com.example.warehousemanagementapi.bases;
 
-import com.fruits.congtyhoaqua.constant.ResponseMessageEnum;
-import com.fruits.congtyhoaqua.dtos.ResponseDTO;
+import com.example.warehousemanagementapi.constant.ResponseMessageEnum;
+import com.example.warehousemanagementapi.dtos.ResponseDTO;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 

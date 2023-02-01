@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -28,9 +29,29 @@ public class ReceiptDetailServiceImp implements IReceiptDetailService {
     private ProductRepository productRepository;
 
     @Override
+    public List<ReceiptDetail> getReceiptDetails(Integer temp) {
+        return receiptDetailRepository.findByTemp(temp);
+    }
+
+    @Override
+    public List<ReceiptDetail> edit(Integer temp) {
+        List<ReceiptDetail> receiptDetails = receiptDetailRepository.findByTemp(temp);
+        Optional<Receipt> receipt = receiptRepository.findById(temp);
+        double total = 0;
+        for (ReceiptDetail item: receiptDetails) {
+            total += item.getAmount()*item.getPrice();
+            item.setReceipt(receipt.get());
+            receiptDetailRepository.save(item);
+        }
+        receipt.get().setIntoMoney(total);
+        receiptRepository.save(receipt.get());
+        return receiptDetails;
+    }
+
+    @Override
     public ReceiptDetail getReceiptDetail(Integer receiptDetailID) {
         Optional<ReceiptDetail> receiptDetail = receiptDetailRepository.findById(receiptDetailID);
-        if (receiptDetail.isEmpty()) {
+        if (!receiptDetail.isPresent()) {
             throw new NotFoundException("Couldn't find a receiptDetail with id: " + receiptDetailID);
         }
 
@@ -39,31 +60,35 @@ public class ReceiptDetailServiceImp implements IReceiptDetailService {
 
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public ReceiptDetail createReceiptDetail(Integer receiptID, String productID, ReceiptDetailDTO receiptDetailDTO) {
-        Optional<Receipt> receipt = receiptRepository.findById(receiptID);
-        if (receipt.isEmpty()) {
-            throw new NotFoundException("Couldn't find a receipt with id: " + receiptID);
-        }
+    public ReceiptDetail createReceiptDetail(String productID, ReceiptDetailDTO receiptDetailDTO) {
+        List<Receipt> receipts = receiptRepository.findAll();
+
+        Receipt receipt = receipts.stream().reduce((first, second) -> second).orElse(null);
+
         Optional<Product> product = productRepository.findById(productID);
-        if (product.isEmpty()) {
+        if (!product.isPresent()) {
             throw new NotFoundException("Couldn't find a product with id: " + productID);
         }
-//        if (product.get().getAmount() <= 0) {
-//            throw new NotFoundException("Quantity is not enough");
-//        }
+
 
         ReceiptDetail receiptDetail = new ReceiptDetail();
-        receiptDetail.setReceipt(receipt.get());
+        if(receipts.isEmpty()) {
+            receiptDetail.setTemp(1);
+        }else {
+            receiptDetail.setTemp(receipt.getReceiptID()+1);
+        }
         receiptDetail.setProduct(product.get());
         Convert.fromReceiptDetailDTOToReceiptDetail(receiptDetailDTO, receiptDetail);
         product.get().setAmount(product.get().getAmount()+receiptDetailDTO.getAmount());
+        product.get().setPrice(product.get().getPrice());
+//        receipt.setIntoMoney(receipt.getIntoMoney()+receiptDetailDTO.getAmount()*receiptDetailDTO.getPrice());
         return receiptDetailRepository.save(receiptDetail);
     }
 
     @Override
     public ReceiptDetail editReceiptDetail(Integer receiptDetailID, ReceiptDetailDTO receiptDetailDTO) {
         Optional<ReceiptDetail> receiptDetail = receiptDetailRepository.findById(receiptDetailID);
-        if (receiptDetail.isEmpty()) {
+        if (!receiptDetail.isPresent()) {
             throw new NotFoundException("Couldn't find a receiptDetail with id: " + receiptDetailID);
         }
         Convert.fromReceiptDetailDTOToReceiptDetail(receiptDetailDTO, receiptDetail.get());

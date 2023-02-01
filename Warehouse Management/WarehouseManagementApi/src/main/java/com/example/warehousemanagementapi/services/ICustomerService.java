@@ -11,5 +11,6 @@ public interface ICustomerService {
     Customer getCustomer(String customerID);
     Customer createCustomer(String customerID, CustomerDTO customerDTO);
     Customer editCustomer(String customerID, CustomerDTO customerDTO);
+    String deleteCustomer(String customerID);
     List<Bill> getBillByCustomer(String customerID);
 }

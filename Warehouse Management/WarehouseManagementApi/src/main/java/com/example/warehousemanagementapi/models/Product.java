@@ -1,11 +1,12 @@
 package com.example.warehousemanagementapi.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import jakarta.persistence.*;
+import javax.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.Nationalized;
 
 import java.util.List;
 
@@ -18,6 +19,7 @@ import java.util.List;
 public class Product {
     @Id
     private String productID;
+    @Nationalized
     private String productName;
     private int amount;
     private double price;

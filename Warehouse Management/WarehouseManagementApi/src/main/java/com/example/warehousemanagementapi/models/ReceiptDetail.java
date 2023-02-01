@@ -1,6 +1,6 @@
 package com.example.warehousemanagementapi.models;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,6 +17,8 @@ public class ReceiptDetail {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer receiptDetailID;
 
+    private Integer temp;
+
     private int amount;
     private double price;
 
@@ -24,7 +26,7 @@ public class ReceiptDetail {
     @JoinColumn(name = "receiptID")
     private Receipt receipt;
 
-    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+    @ManyToOne
     @JoinColumn(name = "productID")
     private Product product;
 }

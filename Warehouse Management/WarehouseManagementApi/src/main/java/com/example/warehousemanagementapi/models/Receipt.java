@@ -1,7 +1,7 @@
 package com.example.warehousemanagementapi.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import jakarta.persistence.*;
+import javax.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -30,7 +30,7 @@ public class Receipt {
     @JoinColumn(name = "manufactureID")
     private Manufacture manufacture;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "receipt")
+    @OneToMany(mappedBy = "receipt")
     @JsonIgnore
     private List<ReceiptDetail> receiptDetails;
 }

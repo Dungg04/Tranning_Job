@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ProductService } from 'src/app/services/product.service';
+import { ProductService } from '../../services/product.service';
 
 @Component({
   selector: 'app-add-product',
@@ -24,7 +24,6 @@ export class AddProductComponent implements OnInit{
     this.service.addProduct(this.product.productID,this.product).subscribe(data => {
       alert("Thêm mới thành công")
       this.roter.navigateByUrl('/');
-      console.log(this.product);
     })
   }
 

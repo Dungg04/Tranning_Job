@@ -1,0 +1,7 @@
+.body_custom {
+  width: 1500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

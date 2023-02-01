@@ -1,10 +1,15 @@
 package com.example.warehousemanagementapi.models;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.util.Set;
+
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -18,4 +23,8 @@ public class Account {
     private Integer id;
     private String userName;
     private String password;
+
+    @ManyToMany(mappedBy = "accounts",fetch = FetchType.EAGER)
+    @JsonIgnore
+    private Set<Role> role;
 }

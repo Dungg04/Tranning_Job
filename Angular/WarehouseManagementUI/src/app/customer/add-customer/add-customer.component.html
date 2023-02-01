@@ -1,0 +1,43 @@
+<div class="body_custom">
+  <h1 style="margin-top: 50px; margin-bottom: 30px;" class="text-center">Nhập thông tin khách hàng</h1>
+  <form class="container" #myForm="ngForm" (ngSubmit)="addCustomer()">
+    <div class="form-group row">
+      <label for="inputEmail3" class="col-sm-2 col-form-label">Mã khách hàng</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" name="customerID" id="customerID" [(ngModel)]="customer.customerID"
+          required>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="inputPassword3" class="col-sm-2 col-form-label">Tên khách hàng</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" name="customerName" id="customerName"
+          [(ngModel)]="customer.customerName" required>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="inputEmail3" class="col-sm-2 col-form-label">Địa chỉ</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" name="address" id="address" [(ngModel)]="customer.address" required>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="inputPassword3" class="col-sm-2 col-form-label">Số điện thoại</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" name="phoneNumber" id="phoneNumber" [(ngModel)]="customer.phoneNumber"
+          required minlength="10" #phoneNumber="ngModel">
+      </div>
+    </div>
+    <!-- <div *ngIf="phoneNumber.invalid" class="alert" style="text-align: left; color: red; margin-left: 165px;">
+    <div *ngIf="phoneNumber.errors?.['minlength']">
+      Số điện thoại sai!
+    </div>
+  </div> -->
+    <div class="form-group row">
+      <div class="col-sm-10">
+        <button class="btn btn-primary" type="submit">Thêm mới</button>
+      </div>
+    </div>
+  </form>
+
+</div>

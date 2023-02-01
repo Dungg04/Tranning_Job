@@ -1,0 +1,61 @@
+<div class="body_custom">
+  <div>
+    <h1 class="text-center">Thông tin phiếu nhập</h1>
+    <div class="row ncc">
+      <label style="width: 120px;">Nhà cung cấp</label>
+      <div class="form-group">
+        <select class="form-control" type="select" #typeManufactureId>
+          <option *ngFor="let item of manufactures">{{item.manufactureID}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="receiptDetail row">
+      <div class="form-group row ncc">
+        <label style="width: 120px;" for="name">Mã hàng hoá</label>
+        <div class="form-group">
+          <select class="form-control" type="select" #typeProductId>
+            <option *ngFor="let i of products"  id="productID" name="productID">{{i.productID}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="ncc">
+        <label style="width: 80px;">Số lượng</label>
+        <input type="number" [(ngModel)]="receiptDetail.amount" id="amount" name="amount"/>
+      </div>
+      <div class="ncc">
+        <label style="width: 80px;">Đơn giá</label>
+        <input type="number" [(ngModel)]="receiptDetail.price" id="price" name="price"/>
+      </div>
+
+      <div class="ncc">
+        <button type="submit" (click)="addReceiptDetail()">Thêm</button>
+      </div>
+    </div>
+
+  </div>
+
+  <table class="table table-sm">
+    <thead>
+      <tr>
+        <th scope="col">STT</th>
+        <th scope="col">Mã hàng hoá</th>
+        <th scope="col">Tên hàng hoá</th>
+        <th scope="col">Số lượng</th>
+        <th scope="col">Giá cả</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of receiptsDetail, let i = index">
+        <td>{{i+1}}</td>
+        <td>{{item.product.productID}}</td>
+        <td>{{item.product.productName}}</td>
+        <td>{{item.amount}}</td>
+        <td>{{item.price}}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div style="margin-top: 30px;">
+    <button type="submit" (click)="addReceipt()">Tạo phiếu nhập</button>
+  </div>
+</div>

@@ -27,16 +27,16 @@ public class ManufactureServiceImp implements IManufactureService {
     @Override
     public Manufacture getManufacture(String manufactureID) {
         Optional<Manufacture> manufacture = manufactureRepository.findById(manufactureID);
-        if(manufacture.isEmpty()) {
+        if (!manufacture.isPresent()) {
             throw new NotFoundException("Couldn't find a supplier with id: " + manufactureID);
         }
         return manufacture.get();
     }
 
     @Override
-    public Manufacture createManufacture(String manufactureID,ManufactureDTO manufactureDTO) {
+    public Manufacture createManufacture(String manufactureID, ManufactureDTO manufactureDTO) {
         Optional<Manufacture> manufacture = manufactureRepository.findById(manufactureID);
-        if(!manufacture.isEmpty()) {
+        if (manufacture.isPresent()) {
             throw new BadRequestException("Already exist a manufacture with id: " + manufactureID);
         }
         Manufacture newManufacture = new Manufacture();
@@ -48,7 +48,7 @@ public class ManufactureServiceImp implements IManufactureService {
     @Override
     public Manufacture editManufacture(String manufactureID, ManufactureDTO manufactureDTO) {
         Optional<Manufacture> manufacture = manufactureRepository.findById(manufactureID);
-        if(manufacture.isEmpty()) {
+        if (!manufacture.isPresent()) {
             throw new NotFoundException("Couldn't find a supplier with id: " + manufactureID);
         }
         Convert.fromManufactureDTOToManufacture(manufactureDTO, manufacture.get());
@@ -59,7 +59,7 @@ public class ManufactureServiceImp implements IManufactureService {
     @Transactional(rollbackFor = Exception.class)
     public boolean deleteManufacture(String manufactureID) {
         Optional<Manufacture> manufacture = manufactureRepository.findById(manufactureID);
-        if(manufacture.isEmpty()) {
+        if (!manufacture.isPresent()) {
             throw new NotFoundException("Couldn't find a supplier with id: " + manufactureID);
         }
         manufactureRepository.delete(manufacture.get());

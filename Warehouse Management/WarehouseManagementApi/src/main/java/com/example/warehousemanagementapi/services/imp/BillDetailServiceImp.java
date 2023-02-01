@@ -32,7 +32,7 @@ public class BillDetailServiceImp implements IBillDetailService {
     @Override
     public BillDetail getBillDetail(Integer billDetailID) {
         Optional<BillDetail> billDetail = billDetailRepository.findById(billDetailID);
-        if (billDetail.isEmpty()) {
+        if (!billDetail.isPresent()) {
             throw new NotFoundException("Couldn't find a billDetail with id: " + billDetailID);
         }
         return billDetail.get();
@@ -42,11 +42,11 @@ public class BillDetailServiceImp implements IBillDetailService {
     @Transactional(rollbackFor = Exception.class)
     public BillDetail createBillDetail(String productID, Integer billID, BillDetailDTO billDetailDTO) {
         Optional<Bill> bill = billRepository.findById(billID);
-        if (bill.isEmpty()) {
+        if (!bill.isPresent()) {
             throw new NotFoundException("Couldn't find a receipt with id: " + billID);
         }
         Optional<Product> product = productRepository.findById(productID);
-        if (product.isEmpty()) {
+        if (!bill.isPresent()) {
             throw new NotFoundException("Couldn't find a product with id: " + productID);
         }
 
@@ -61,7 +61,7 @@ public class BillDetailServiceImp implements IBillDetailService {
     @Override
     public BillDetail editBillDetail(Integer billDetailID, BillDetailDTO billDetailDTO) {
         Optional<BillDetail> billDetail = billDetailRepository.findById(billDetailID);
-        if (billDetail.isEmpty()) {
+        if (!billDetail.isPresent()) {
             throw new NotFoundException("Couldn't find a billDetail with id: " + billDetailID);
         }
         Convert.fromBillDetailDTOToBillDetail(billDetailDTO, billDetail.get());

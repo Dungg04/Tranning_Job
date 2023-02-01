@@ -12,7 +12,6 @@ import java.util.Date;
 @Setter
 @Getter
 public class ReceiptDTO {
-    private double intoMoney;
     private String hasAccount;
     private String debtAccount;
 }

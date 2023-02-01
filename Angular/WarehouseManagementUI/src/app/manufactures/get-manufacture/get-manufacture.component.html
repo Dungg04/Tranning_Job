@@ -1,0 +1,27 @@
+
+<div class="body_custom">
+  <h1 class="text-center">Danh sách nhà cung cấp</h1>
+
+  <table class="table table-sm">
+    <thead>
+      <tr>
+        <th scope="col" style="width: 50px;">STT</th>
+        <th scope="col" style="width: 150px;">Mã nhà cung cấp</th>
+        <th scope="col">Tên nhà cung cấp</th>
+        <th scope="col" >Địa chỉ</th>
+        <th scope="col">Số điện thoại</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of manufactures| paginate: { itemsPerPage: 10, currentPage: p }, let i = index">
+        <td>{{i+1}}</td>
+        <td>{{item.manufactureID}}</td>
+        <td>{{item.manufactureName}}</td>
+        <td>{{item.address}}</td>
+        <td>{{item.phoneNumber}}</td>
+      </tr>
+    </tbody>
+  </table>
+  <pagination-controls (pageChange)="p = $event" class="text-center" style="margin-top: 20px;"></pagination-controls>
+
+  </div>

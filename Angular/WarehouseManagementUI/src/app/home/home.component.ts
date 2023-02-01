@@ -8,8 +8,17 @@ import { ProductService } from '../services/product.service';
 })
 export class HomeComponent implements OnInit{
   productName = '';
+  p: number = 1;
   products: any[]=[];
-  constructor(private product: ProductService){}
+  startP = 0;
+  endP = 0;
+  constructor(
+    private product: ProductService,
+    ){
+      for(let i=0; i<this.products.length; i++) {
+        this.products.push(`item ${i}`);
+      }
+    }
 
   ngOnInit(): void {
     this.product.getProduct().subscribe(res => {
@@ -26,8 +35,21 @@ export class HomeComponent implements OnInit{
   searchByName(){
     this.product.getProductsByName(this.productName).subscribe(res => {
       this.products = res;
-      console.log(res);
-    })
-    .unsubscribe()
+    }, error => {
+        alert("Không tìm được sản phẩm nào")
+        this.productName = ""
+    }
+    )
+  }
+
+  serachByPrice(){
+    this.product.getProductByPriice(this.startP, this.endP).subscribe(res => {
+      this.products = res;
+    }, error => {
+        alert("Không tìm được sản phẩm nào")
+        this.startP = 0;
+        this.endP = 0;
+    }
+    )
   }
 }

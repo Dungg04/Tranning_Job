@@ -1,0 +1,32 @@
+<h1 style="margin-top: 50px; margin-bottom: 30px;" class="text-center">Nhập thông tin nhà cung cấp</h1>
+<form class="container">
+  <div class="form-group row">
+    <label for="inputEmail3" class="col-sm-2 col-form-label">Mã nhà cung cấp</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" name="manufactureID" id="manufactureID" [(ngModel)]="manufature.manufactureID">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="inputPassword3" class="col-sm-2 col-form-label">Tên nhà cung cấp</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" name="manufactureName" id="manufactureName" [(ngModel)]="manufature.manufactureName">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="inputEmail3" class="col-sm-2 col-form-label">Địa chỉ</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" name="address" id="address" [(ngModel)]="manufature.address">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="inputPassword3" class="col-sm-2 col-form-label">Số điện thoại</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" name="phoneNumber" id="phoneNumber" [(ngModel)]="manufature.phoneNumber">
+    </div>
+  </div>
+  <div class="form-group row">
+    <div class="col-sm-10">
+      <button class="btn btn-primary" (click)="addMenufacture()">Thêm mới</button>
+    </div>
+  </div>
+</form>

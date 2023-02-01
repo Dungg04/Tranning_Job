@@ -16,5 +16,5 @@ public interface IProductService {
     List<BillDetail> getAllBillByProduct(String productID);
     List<Product> getProductsSortByAmount();
     List<Product> getProductsByName(String productName);
-    List<Product> getProductsById(String productID);
+    List<Product> getByPrice(Double startP, Double endP);
 }

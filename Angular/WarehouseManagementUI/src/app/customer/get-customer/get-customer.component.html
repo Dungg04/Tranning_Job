@@ -1,0 +1,36 @@
+
+<div class="body_custom">
+<!--
+<div class="row svb">
+  <form class="form-inline">
+    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+    <button class="btn btn-outline-success my-2 my-sm-0">Search</button>
+  </form>
+
+</div> -->
+
+<h1 class="text-center">Danh sách khách hàng</h1>
+
+<table class="table table-sm" *ngIf="customers.length >0">
+  <thead>
+    <tr>
+      <th scope="col" style="width: 50px;">STT</th>
+      <th scope="col" style="width: 120px;">Mã khách</th>
+      <th scope="col">Tên khách hàng</th>
+      <th scope="col" >Địa chỉ</th>
+      <th scope="col">Số điện thoại</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of customers| paginate: { itemsPerPage: 10, currentPage: p }, let i = index" routerLink="/editCustomer/{{item.customerID}}">
+      <td>{{i+1}}</td>
+      <td>{{item.customerID}}</td>
+      <td>{{item.customerName}}</td>
+      <td>{{item.address}}</td>
+      <td>{{item.phoneNumber}}</td>
+    </tr>
+  </tbody>
+</table>
+<pagination-controls (pageChange)="p = $event" class="text-center" style="margin-top: 20px;"></pagination-controls>
+
+</div>

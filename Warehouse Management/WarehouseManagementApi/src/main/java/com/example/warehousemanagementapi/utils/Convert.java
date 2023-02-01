@@ -51,7 +51,6 @@ public class Convert {
     }
 
     public static Receipt fromReceiptDTOToReceipt(ReceiptDTO receiptDTO, Receipt receipt) {
-        receipt.setIntoMoney(receiptDTO.getIntoMoney());
         receipt.setHasAccount(receiptDTO.getHasAccount());
         receipt.setDebtAccount(receiptDTO.getDebtAccount());
         return receipt;

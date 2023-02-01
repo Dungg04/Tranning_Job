@@ -5,12 +5,14 @@ import com.example.warehousemanagementapi.exceptions.BadRequestException;
 import com.example.warehousemanagementapi.exceptions.NotFoundException;
 import com.example.warehousemanagementapi.models.Bill;
 import com.example.warehousemanagementapi.models.Customer;
+import com.example.warehousemanagementapi.models.Manufacture;
 import com.example.warehousemanagementapi.repositories.CustomerRepository;
 import com.example.warehousemanagementapi.services.ICustomerService;
 import com.example.warehousemanagementapi.utils.Convert;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
@@ -27,7 +29,7 @@ public class CustomerServiceImp implements ICustomerService {
     @Override
     public Customer getCustomer(String customerID) {
         Optional<Customer> customer = customerRepository.findById(customerID);
-        if(customer.isEmpty()) {
+        if(!customer.isPresent()) {
             throw new NotFoundException("Couldn't  find a customer with id: " + customerID);
         }
         return customer.get();
@@ -36,7 +38,7 @@ public class CustomerServiceImp implements ICustomerService {
     @Override
     public Customer createCustomer(String customerID, CustomerDTO customerDTO) {
         Optional<Customer> customer = customerRepository.findById(customerID);
-        if(!customer.isEmpty()) {
+        if(customer.isPresent()) {
             throw new BadRequestException("Already exist customer with id: " + customerID);
         }
         Customer newCustomer = new Customer();
@@ -48,11 +50,19 @@ public class CustomerServiceImp implements ICustomerService {
     @Override
     public Customer editCustomer(String customerID, CustomerDTO customerDTO) {
         Optional<Customer> customer = customerRepository.findById(customerID);
-        if (customer.isEmpty()) {
+        if (!customer.isPresent()) {
             throw new NotFoundException("Couldn't  find a customer with id: " + customerID);
         }
         Convert.fromCustomerDTOToCustomer(customerDTO, customer.get());
         return customerRepository.save(customer.get());
+    }
+
+    @Override
+    @Transactional
+    public String deleteCustomer(String customerID) {
+        Optional<Customer> customer = customerRepository.findById(customerID);
+        customerRepository.delete(customer.get());
+        return "Delete success!";
     }
 
     @Override

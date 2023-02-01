@@ -1,0 +1,23 @@
+.body_custom {
+  width: 1500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.svb {
+  width: 1000px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.svb_right {
+  width: 450px;
+  display: flex;
+  justify-content: end;
+}
+
+.table {
+  width: 1000px;
+}

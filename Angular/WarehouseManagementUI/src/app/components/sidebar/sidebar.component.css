@@ -1,0 +1,33 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 70px;
+  background-color: #00466e;
+  padding: 0 20px;
+}
+
+.logo img{
+  width: 100px;
+  height: 40px;
+  cursor: pointer;
+}
+
+.info-account img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin-right: 8px;
+  cursor: pointer;
+}
+
+.info-account p{
+  margin: 0 !important;
+  font-size: 16px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.btn {
+  color: #fff;
+}
